@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>play-with-masud</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+<body>
+     <!-- As a heading -->
+   <nav id="nav" class="navbar navbar-dark">
+          <div class="container-fluid ">         
+           <span class="navbar-brand mb-0 h3 ">স্মৃতি পরীক্ষা</span>
+         </div>
+
+    </nav> 
+    <div id="main">
+         <figure class="text-center">
+
+            <blockquote class="blockquote">
+                 <p>আপনার ইচ্ছা অনুসারে যেকোনো নাম্বার নিচের বক্সে বসান</p>
+            </blockquote>
+
+            <figcaption class="blockquote-footer">
+                 <p>লক্ষ রাখুন আপনি যে নম্বরটি দিচ্ছেন তা যেনো অব্যশই ১ থেকে ১০ এর মধ্যে হয় ।
+                      তাহলে চলুন শুরু করা যাক ।<cite title="Source Title"></cite</p>
+            </figcaption>
+
+         </figure>
+         <div id="form-group">
+             <input id="userInput" class="form-control" placeholder="আপনার সংখ্যাটি এখানে দিন">
+         </div>
+                
+       <div id="btn-btn">
+         <button id="resultReady" type="button" class="btn btn-secondary">রেজাল্ট দেখুন</button>
+         <button id="removeResult" type="button" class="btn btn-success">নতুন নাম্বার দিন</button>
+                    
+       </div>
+                <div id="show-result">
+                    <span id="currrentResult"></span>
+                    <span id="currrentResulttwo"></span>
+                </div>
+                <div class="show-result-two">
+                    <span id="currrentResultFail">Hi</span><br>
+                    <p id="currrentResultFailtwo"></p>
+                </div>
+                <div class="totalResult">
+                    <span></span>
+                </div>
+                
+    </div>
+
+
+    <footer id="footer-section">
+        <p>Author: Md Masud 
+        <a href="mahamud.al.masud@gmail.com ">mahamud.al.masud@gmail.com</a></p>
+      </footer>
+      
+
+
+     <script>
+
+//RESULT BUTTON FUNCTION
+document.getElementById("resultReady").addEventListener("click", function() {      
+            
+         var numberWin = 0;
+          var numberLost = 0;
+         for (var i=1; i<=1; i++){
+         var userInputData = document.getElementById("userInput").value;
+          var userNumber = parseInt(userInputData);
+          //document.getElementById("userInput").value = "";
+         
+         var randomNumber =Math.floor (Math.random()*3) + 1 ;
+              if (userNumber==randomNumber){
+                  let currrentResult = document.getElementById("currrentResult").innerText;
+                 let totalResult = randomNumber + currrentResult;
+                 // console.log("win");
+                  document.getElementById("currrentResult").innerText = "বাহ!-আপনি সঠিক সংখ্যাটি দিয়েছেন-0" + totalResult;
+                  document.getElementById("currrentResultFail").innerText ="";
+                  document.getElementById("userInput").value = "";
+                           numberWin++;   
+              }
+              
+              else {
+                 // console.log("lost" + randomNumber);
+                  document.getElementById("currrentResultFail").innerText = "দুঃখিত-সঠিক সংখ্যাটি হচ্ছে-0" + randomNumber;
+                  document.getElementById("currrentResult").innerText = "";
+                  document.getElementById("userInput").value = "";
+                 numberLost++;  
+                   }     
+                 }     
+               
+            })
+            //result button end
+
+
+
+ //reset button         
+    document.getElementById("removeResult").addEventListener("click", function(){
+       // console.log("button is click");
+        document.getElementById("userInput").value = "";
+        document.getElementById("show-result").innerText = "please try again";
+        document.getElementById("currrentResultFail").innerText = "please try again";
+    })    
+//reset button end
+
+    
+      
+    </script>
+</body>
+</html>
